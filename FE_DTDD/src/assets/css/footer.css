@@ -1,0 +1,45 @@
+.support-infor p{
+    margin-bottom: 4px;
+}
+
+.footer-wrapper{
+    background-color: rgb(226, 172, 36);
+    width: 100%;
+}
+
+.footer-container{
+    margin-top: -12px;
+}
+
+.btn-support{
+    background-color: transparent;
+    border: none;                  /* Xóa viền */
+    box-shadow: none;              /* Xóa đổ bóng nếu có */
+    padding: 2px 0;
+}
+
+.support-infor{
+    display: grid;
+    text-align: center;
+    margin: 8px 0;
+    font-weight: bold;
+}
+.support-icon{
+    display: flex;
+    justify-content: center;
+}
+
+.fa-brands.fa-facebook,
+.fa-brands.fa-instagram,
+.fa-brands.fa-twitter{
+    font-size: 24px;
+    margin: 0 8px;
+    border-radius: 50%;
+    transition: color 0.3s ease;
+}
+
+.fa-brands.fa-facebook:hover,
+.fa-brands.fa-instagram:hover,
+.fa-brands.fa-twitter:hover{
+    color: gray
+}

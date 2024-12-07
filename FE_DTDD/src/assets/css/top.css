@@ -1,0 +1,103 @@
+.container {
+    margin: 0 auto;
+    padding:  8px 32px !important; /* Giảm khoảng cách bên trong */
+    max-width: 1200px  !important; /* Đặt chiều rộng tối đa để căn giữa trên màn hình */
+}
+
+.top-wrapper {
+    background-color: rgb(226, 172, 36);
+    height: 56px;
+}
+
+.header-web {
+    display: flex;
+    align-items: center;
+    /* justify-content: space-between; */
+    gap: 16px; /* Khoảng cách giữa các phần tử trong header */
+    width: 100%;
+}
+
+.img-logo {
+    width: 246px;
+}
+
+.search-box {
+    width: 320px;
+}
+
+.search-inbox{
+    padding: 8px 16px;
+    width: 320px;
+}
+
+.select-location {
+    width: 250px; /* Giảm chiều rộng để tránh quá xa nhau */
+}
+
+a .btn-login,
+a .btn-cart{
+    color: black;
+}
+
+.btn-cart,
+.btn-login {
+    font-weight: bold;
+    outline: none;
+    border: none;
+}
+
+.btn-cart-wrapper a:hover,
+.btn-login-wrapper a:hover{
+    color: black;
+}
+
+.search-inbox,
+.select-location,
+.btn-cart-wrapper,
+.btn-login-wrapper {
+    outline: none;
+    border-radius: 64px !important;
+}
+
+.btn-cart:focus,
+.link-btn-cart:focus,
+.btn-login:focus,
+.link-btn-login:focus,
+.btn-cart-wrapper:focus,
+.btn-login-wrapper:focus {
+    outline: none; /* Loại bỏ outline (viền xanh) */
+    border: none;  /* Loại bỏ border */
+    color: black;
+}
+
+.btn-cart-wrapper:hover,
+.btn-login-wrapper:hover {
+    background-color: #f0f0f0; /* Màu nền nhạt hơn khi hover */
+}
+
+.fa-solid.fa-user,
+.fa-solid.fa-cart-shopping {
+    margin-right: 4px;
+}
+
+/* Input location */
+.location-box {
+    display: flex;
+    width: 264px;
+    align-items: center;
+    padding: 8px 16px;
+    background-color: white;
+    border-radius: 64px;
+    cursor: pointer;
+
+}
+
+.location-icon {
+    color: #000;
+    margin-right: 8px; /* Giảm khoảng cách biểu tượng */
+}
+
+.location-text {
+    font-size: 16px;
+    color: #333;
+}

@@ -1,0 +1,53 @@
+.light{
+    margin-top: 0px;
+    margin-bottom: 0px;
+}
+.menu-wrapper{
+    background-color: rgb(226, 172, 36);
+
+}
+.menu-web {
+    display: flex;
+    align-items: center;
+    justify-content: space-between !important; /* Căn các phần tử con đều nhau, có khoảng cách giữa */
+    width: 100%;
+    margin-top: 4px;
+}
+
+.container.menu-container {
+    margin: 0 auto;
+    padding: 0 32px 4px !important; /* Giảm khoảng cách bên trong */
+    max-width: 1200px; /* Đặt chiều rộng tối đa để căn giữa trên màn hình */
+}
+
+a .option-mobile{
+    color: black;
+}
+
+.select-mobile {
+    display: flex; /* Các button sẽ được hiển thị theo hàng ngang */
+    flex-direction: row; /* Các phần tử sẽ nằm ngang */
+    gap: 16px; /* Khoảng cách giữa các nút */
+    width: 100%; /* Đảm bảo phần tử cha chiếm hết chiều rộng */
+    justify-content: center;
+
+
+}
+
+.option-mobile {
+    background-color: transparent; /* Nền trong suốt */
+    border: none;                  /* Xóa viền */
+    box-shadow: none;              /* Xóa đổ bóng nếu có */
+    color: inherit;                /* Thừa hưởng màu chữ từ phần tử cha */
+    padding: 8px 16px;             /* Điều chỉnh padding nếu cần */
+    cursor: pointer;
+    border-radius: 64px;
+    font-weight: bold;
+    flex-grow: 1;                  /* Làm cho các button giãn đều trên chiều rộng */
+    text-align: center;            /* Căn giữa chữ trong các button */
+}
+
+.option-mobile:hover {
+    background-color: #fff;
+    border-color: black;
+}

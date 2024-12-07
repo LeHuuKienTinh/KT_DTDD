@@ -1,0 +1,131 @@
+/* Banner */
+.banner{
+    width: 596px;
+    display: flex;
+    margin-left: 8px;
+}
+
+.banner-wrapper{
+    display: flex;
+}
+
+.img-banner{
+    border-radius: 16px;
+}
+
+/* SortBy */
+.card-sort-by{
+    margin-top: 16px;
+    padding: 8px;
+    border-width: 2px;
+    border-color: rgb(226, 172, 36) !important;
+    justify-content: center;
+}
+.sort-by{
+    margin-left: 8px;
+    display: flex;
+    border-width: 2px;
+}
+
+.title-sort{
+    font-weight: 500;
+}
+
+.sort-option{
+    text-decoration: none;
+    margin: 0 24px;
+    color: gray;
+    font-weight: 600;
+}
+
+.product-title:hover,
+.sort-option:hover{
+    color: black
+}
+
+.sort-option:focus{
+    color: black
+}
+
+/* Card-product */
+.row.row-product{
+    margin-top: 24px;
+}
+.card.card-product{ 
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        position: relative;  /* Đảm bảo thẻ card có vị trí tương đối để dễ dàng điều khiển */
+        overflow: hidden; 
+        margin-bottom: 8px;   /* Đảm bảo ảnh không bị tràn ra ngoài khi di chuyển */
+}
+
+.card-img-top.img-product{
+    width: 78%;
+    margin-top: 36px;
+    transition: transform 0.3s ease;
+}
+
+.card-product:hover .img-product{
+    transform: translateY(-8px);
+}
+
+.product-title{
+    font-size: 16px;
+    font-weight: 400;
+}
+
+.cost-product{
+    color: red;
+    font-size: 20px;
+}
+
+.link-product{
+    text-decoration: none;
+}
+
+.product-discount{
+    margin-top: 8px !important;
+    margin-left: 12px;
+    font-size: 14px;
+}
+
+/* Promotion */
+.promotion-products{
+    margin-top: 16px;
+}
+
+.card-promotion{
+    align-items: center;
+    border-width: 2px !important;
+    border-color: rgb(226, 172, 36) !important;
+}
+
+.featured-products{
+    color: red;
+    font-weight: bold;
+    font-size: 24px;
+    margin-bottom: 0;
+    animation: changeColor 3s infinite; /* Thời gian thay đổi màu và lặp lại vô hạn */
+
+}
+
+/* Tạo animation thay đổi màu chữ */
+@keyframes changeColor {
+    0% {
+      color: red;
+    }
+    25% {
+        color: gray;
+      }
+    50% {
+        color: orange;
+    }
+    75% {
+        color: purple;
+    }
+    100% {
+        color: yellow;
+      
+    }
+  }

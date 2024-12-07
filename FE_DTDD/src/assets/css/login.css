@@ -1,0 +1,59 @@
+.card-login-wrapper{
+    display: flex;
+    justify-content: center;
+    margin-top: 8px;
+}
+
+.card-login.card{
+    border-color: rgb(232, 194, 100);
+    border-width: 4px;
+    border-radius: 8px;
+    width: 624px;
+    box-shadow: 0 8px 30px rgba(227, 190, 54, 0.5); /* Đổ bóng màu vàng nhẹ */
+    transition: all 0.3s ease; /* Thêm hiệu ứng chuyển động khi hover */
+}
+
+.card-login.card:hover {
+    box-shadow: 0 12px 40px rgba(218, 141, 10, 0.855); /* Đổ bóng đậm hơn khi hover */
+    transform: translateY(-2px); /* Di chuyển nhẹ lên khi hover */
+    border-color: rgb(228, 159, 10);
+}
+
+.forgot-password,
+.register-now{
+    color: rgb(183, 125, 7);
+}
+
+.forgot-password:hover,
+.register-now:hover{
+    color: orange;
+}
+
+.input-phone:focus,
+.input-password:focus{
+    border-color: orange !important;
+    box-shadow: 0 8px 30px rgba(227, 190, 54, 0.5) !important; /* Đổ bóng màu vàng nhẹ */
+
+}
+
+.remember-check.check-pw:checked{
+    background-color: orange;
+    border-color: orange;
+    cursor: pointer;
+}
+
+.remember-check.check-pw:focus{
+    border-color: orange;
+    box-shadow: 0 12px 40px rgba(218, 190, 14, 0.855);
+    cursor: pointer;
+}
+
+.submit-login{
+    background-color: rgb(226, 172, 36) !important ;
+}
+
+.submit-login:hover{
+    background-color: rgb(219, 150, 23) !important;
+}
+
+
