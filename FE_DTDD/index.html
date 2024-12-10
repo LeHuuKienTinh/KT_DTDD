@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" href="/FE_DTDD/src/assets/android-chrome-192x192.png"> <!-- Đảm bảo favicon tồn tại -->
+    <title>KT MOBILE</title> <!-- Tiêu đề tĩnh -->
+  </head>
+  <body>
+    <noscript>
+      <strong>We're sorry but KT MOBILE doesn't work properly without JavaScript enabled. Please enable it to continue.</strong>
+    </noscript>
+    <div id="app"></div>
+    
+    <!-- Chèn script chính của Vue vào đây -->
+    <script type="module" src="src/main.js"></script> <!-- Thêm script cho Vite -->
+  </body>
+</html>
+<style>
+body {
+  display: grid;
+  grid-template-rows: auto 1fr auto; /* Header, nội dung chính, footer */
+  min-height: 100vh;
+  margin: 0;
+}
+
+footer {
+  background-color: #f5a623;
+  padding: 10px;
+  text-align: center;
+}
+
+</style>

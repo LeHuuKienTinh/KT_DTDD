@@ -31,7 +31,7 @@
         axios
           .get('http://127.0.0.1:8000/api/kt-be/get_category')
           .then((res) => [
-            console.log(res),
+            // console.log(res),
             this.categories = res.data.data
           ])
       }

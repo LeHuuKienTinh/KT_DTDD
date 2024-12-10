@@ -5,7 +5,7 @@ import DefaultLayout from './layout/wrapper/Master.vue'
 import AuthLayout from './layout/wrapper/AuthMaster.vue'
 import 'bootstrap/dist/css/bootstrap.min.css';
 import 'bootstrap/dist/js/bootstrap.bundle.min.js';
-import { VueToaster } from '@meforma/vue-toaster'
+import VueToaster from '@meforma/vue-toaster';
 
 const app = createApp(App)
 

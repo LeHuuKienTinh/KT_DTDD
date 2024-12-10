@@ -7,7 +7,7 @@
       <div class="row row-product">
         <!-- Duyệt qua các sản phẩm -->
         <div v-for="(product) in filteredProducts" :key="product.id" class="col-lg-3 item-product">
-          <router-link :to="'/kt-mobile/product-detail/' + product.id" style="text-decoration: none;">
+          <router-link :to="'/kt-mobile/product-detail/' + product.id + '&slug=' + product.slug" style="text-decoration: none;">
             <a class="link-product">
               <div class="card card-product">
                 <img :src="product.img" class="card-img-top img-product" alt="product.name" />

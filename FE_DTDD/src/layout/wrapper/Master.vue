@@ -1,5 +1,5 @@
 <template>
-    <div class="header-wrapper">
+        <div class="header-wrapper">
         <div class="top-wrapper">
             <Top></Top>
         </div>

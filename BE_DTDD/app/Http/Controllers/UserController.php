@@ -142,7 +142,7 @@ class UserController extends Controller
         'status' => true,
         'info' => [
         'id' => $user->id,
-        'name' => $user->name,
+        'name' => $user->ho_va_ten,
         'email' => $user->email,
         'phone' => $user->phone_number,
         // Các thông tin cần thiết khác

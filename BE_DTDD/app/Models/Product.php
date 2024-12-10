@@ -17,6 +17,7 @@ class Product extends Model
         'rating',
         'reviews',
         'id_cate',
+        'description'
     ];
     // Hàm tạo slug khi lưu sản phẩm
     public static function boot()

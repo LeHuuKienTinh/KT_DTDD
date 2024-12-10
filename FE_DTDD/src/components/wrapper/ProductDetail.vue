@@ -47,6 +47,7 @@ import axios from 'axios';
     setProductData() {
       // Lấy category từ query params trong URL
       this.product.id = this.$route.params.product;  // ID từ URL
+      this.product.slug = this.$route.query.slug;  // ID từ URL
     },
     getProductDetail(){
       axios

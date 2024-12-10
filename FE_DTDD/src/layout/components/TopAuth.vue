@@ -14,6 +14,14 @@
               class="fa-solid fa-user"></i>Profile</button></a>
       </div> -->
 
+      <!-- searchProduct()
+    {
+      axios
+      .get(`http://127.0.0.1:8000/api/kt-be/get_product_detail/${this.searchInput}`)
+      .then((res)=>{
+        
+      })
+    } -->
       <div class="btn-cart-wrapper">
         <router-link to="/kt-mobile/shopping-cart">
           <button class="btn-cart btn">
@@ -64,7 +72,8 @@ export default {
   name: "AppTop", // Đổi từ "Footer" thành "AppFooter"
   data() {
     return {
-      user: {}
+      user: {},
+      // searchInput : "" //dữ liệu tìm kiếm
     }
   },
   created() {
@@ -79,7 +88,7 @@ export default {
           }
         })
         .then((res) => {
-          console.log(res.data.info)
+          // console.log(res.data.info)
           this.user = res.data.info;  // Lưu sản phẩm vào biến
         })
         .catch((error) => {
@@ -106,7 +115,8 @@ export default {
             toaster.error(res.data.message); // Hiển thị thông báo thành công
           }
         })
-    }
+    },
+    
   },
 };
 </script>
