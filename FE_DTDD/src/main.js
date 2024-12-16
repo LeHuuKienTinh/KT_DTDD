@@ -3,9 +3,11 @@ import App from './App.vue'
 import router from './router'
 import DefaultLayout from './layout/wrapper/Master.vue'
 import AuthLayout from './layout/wrapper/AuthMaster.vue'
+import AdminLayout from './layout/wrapper/AdminMaster.vue'
 import 'bootstrap/dist/css/bootstrap.min.css';
 import 'bootstrap/dist/js/bootstrap.bundle.min.js';
 import VueToaster from '@meforma/vue-toaster';
+
 
 const app = createApp(App)
 
@@ -15,5 +17,6 @@ app.use(VueToaster)
 
 app.component("default-layout", DefaultLayout)
 app.component("auth-layout", AuthLayout)
+app.component("admin-layout", AdminLayout)
 
 app.mount("#app")

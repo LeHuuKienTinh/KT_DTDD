@@ -86,7 +86,7 @@ export default {
                     console.log(res.status);
                     //Xử lý nếu đăng ký thành công
                     if (res.status == 201) {
-                        toaster.success(res.data.message,);
+                        toaster.success(res.data.message);
                         this.$router.push('/kt-mobile/login')
                         this.user_create = {}
                         this.rePassword = ''

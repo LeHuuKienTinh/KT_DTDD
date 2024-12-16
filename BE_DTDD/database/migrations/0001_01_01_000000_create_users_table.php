@@ -19,6 +19,9 @@ return new class extends Migration
             $table->string('phone_number')->unique();
             $table->string('password');
             $table->boolean('is_active')->default(0);
+            $table->boolean('is_lock')->default(0);
+            $table->integer('rules')->default(0);
+            $table->string('verification_token', 60)->nullable(); // Đảm bảo có cột này
             $table->rememberToken();
             $table->timestamps();
         });

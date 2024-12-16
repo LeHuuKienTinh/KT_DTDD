@@ -72,23 +72,21 @@ export default {
             axios
                 .post('http://127.0.0.1:8000/api/kt-be/login', loginData)
                 .then((res) => {
-                    console.log(res);
                     //Xử lý nếu đăng nhập thành công
                     
                     if (res.status == 200) {
                         // Lưu thông tin người dùng vào localStorage
-                        localStorage.setItem('ten_kh', res.data.user.name);
                         localStorage.setItem('access_token', res.data.access_token);
+                        localStorage.setItem('rule', res.data.user.rule)
 
                         // Hiển thị thông báo thành công
                         toaster.success('Xin chào ' + res.data.user.name);
                         toaster.success(res.data.message);
-
-                        // Kiểm tra query 'redirect' trong URL và chuyển hướng về trang đó
-                        console.log('Redirect URL:', this.$route.query.redirect); // Kiểm tra URL redirect
-                        const redirectUrl = this.$route.query.redirect || '/kt-mobile/profile'; // Nếu không có, chuyển đến profile mặc định
-                        this.$router.push(redirectUrl);  // Chuyển hướng
-
+                        if(res.data.user.rule == 1) {
+                            this.$router.push('/kt-mobile/admin/products');  // Chuyển hướng
+                        } else {
+                            this.$router.push('/kt-mobile/profile');  // Chuyển hướng
+                        }
                     }
                 })
                 .catch((error) => {
@@ -101,6 +99,11 @@ export default {
                             toaster.error(error.response.data.message, {
                                 timeout: 5000,
                             });
+                        } else if (error.response.status == 409) {
+                            toaster.error(error.response.data.message, {
+                                timeout: 5000,
+                            });
+                            
                         } else if (error.response.status == 422) {
                             // Giả sử error.response.data.message là một mảng
                             // Object.values(errorMessage) lấy tất cả các thông báo lỗi từ đối tượng errorMessage.

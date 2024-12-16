@@ -5,23 +5,23 @@
         <a href="/"><img class="img-logo" src="../../assets/banner.jpeg" alt=""></a>
       </div>
 
-      <div class="search-box">
-        <input type="search" class="search-inbox form-control" placeholder=" Bạn tìm gì...?">
+      
+      <div ref="searchBox" class="search-box">
+        <input v-model="query" @input="searchProducts" type="search" class="search-inbox form-control" placeholder="Bạn tìm gì...?">
+        <div v-if="products.length > 0 && query.length > 2" class="search-results">
+          <ul>
+            <li v-for="product in products" :key="product.id" @click="selectProduct(product)">{{ product.name }}</li>
+          </ul>
+        </div>
       </div>
+
 
       <!-- <div class="btn-login-wrapper">
         <a href="/kt-mobile/profile" class="link-btn-login"><button class="btn-login btn"><i
               class="fa-solid fa-user"></i>Profile</button></a>
       </div> -->
 
-      <!-- searchProduct()
-    {
-      axios
-      .get(`http://127.0.0.1:8000/api/kt-be/get_product_detail/${this.searchInput}`)
-      .then((res)=>{
-        
-      })
-    } -->
+
       <div class="btn-cart-wrapper">
         <router-link to="/kt-mobile/shopping-cart">
           <button class="btn-cart btn">
@@ -45,8 +45,8 @@
           </button>
         </a>
         <ul class="dropdown-menu">
-          <li><router-link to="/kt-mobile/profile"  class="dropdown-item">Thông tin cá nhân</router-link></li>
-          <li><router-link to="/kt-mobile/order-user"  class="dropdown-item">Đơn hàng</router-link></li>
+          <li><router-link to="/kt-mobile/profile" class="dropdown-item">Thông tin cá nhân</router-link></li>
+          <li><router-link to="/kt-mobile/order-user" class="dropdown-item">Đơn hàng</router-link></li>
           <li>
             <hr class="dropdown-divider">
           </li>
@@ -65,6 +65,7 @@
 
 </template>
 <script>
+import { debounce } from 'lodash';  // Import debounce từ lodash
 import { createToaster } from "@meforma/vue-toaster";
 const toaster = createToaster({ position: "top-right" });
 import axios from 'axios';
@@ -73,11 +74,26 @@ export default {
   data() {
     return {
       user: {},
-      // searchInput : "" //dữ liệu tìm kiếm
+      query: '',
+      products: [],
+      isSearchBoxActive: false, // Trạng thái để theo dõi ô tìm kiếm có đang được mở hay không
     }
   },
   created() {
-    this.getDataUser()
+    this.getDataUser();
+    this.searchProducts = debounce(this.searchProducts, 500);
+  },
+  mounted() {
+    // Lắng nghe sự kiện click bên ngoài
+    document.addEventListener('click', this.handleClickOutside);
+  },
+  beforeDestroy() {
+    // Hủy bỏ sự kiện click khi component bị huỷ
+    document.removeEventListener('click', this.handleClickOutside);
+  },
+  watch: {
+    // Khi `id` thay đổi (ví dụ người dùng chuyển sản phẩm), ta sẽ tải lại dữ liệu
+    '$route.params.id': 'selectProduct',
   },
   methods: {
     getDataUser() {
@@ -105,6 +121,8 @@ export default {
         .then((res) => {
           if (res.data.status) {
             localStorage.removeItem('access_token'); // Xóa token khỏi localStorage
+            localStorage.removeItem('rule'); // Xóa token khỏi localStorage
+            localStorage.removeItem('ten_kh'); // Xóa token khỏi localStorage
             toaster.success(res.data.message); // Hiển thị thông báo thành công
 
             // Chờ 2 giây trước khi chuyển hướng
@@ -116,7 +134,32 @@ export default {
           }
         })
     },
-    
+    searchProducts() {
+      if (this.query.length > 2) {  // Chỉ tìm kiếm khi người dùng nhập ít nhất 3 ký tự\
+        axios
+          .get('http://127.0.0.1:8000/api/kt-be/search_product/', {
+            params: { query: this.query },
+          })
+          .then((res) => {
+            this.products = res.data.data;
+          });
+      } else {
+        this.products = [];  // Nếu từ khóa ngắn hơn 3 ký tự, không hiển thị kết quả
+      }
+    },
+    handleClickOutside(event) {
+      // Kiểm tra xem click có diễn ra ngoài ô tìm kiếm không
+      const searchBox = this.$refs.searchBox; // Lấy ô tìm kiếm bằng ref
+      if (searchBox && !searchBox.contains(event.target)) {
+        this.isSearchBoxActive = false; // Tắt ô tìm kiếm
+        this.isLoading = false; // Tắt trạng thái loading
+        this.products = []; // Xóa kết quả tìm kiếm
+      }
+    },
+    selectProduct(product) {
+    // Điều hướng đến trang chi tiết sản phẩm
+    this.$router.push({ path: `/kt-mobile/product-detail/${product.id}` });
+  },
   },
 };
 </script>
@@ -136,7 +179,41 @@ export default {
 }
 
 .search-box {
+  position: relative;
   width: 310px !important;
+}
+
+.search-results {
+  position: absolute;
+  top: 100%;
+  left: 0;
+  width: 100%;
+  max-height: 200px;
+  overflow-y: auto;
+  background-color: white;
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  z-index: 10;
+}
+
+.search-results ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.search-results li {
+  padding: 8px 16px;
+  cursor: pointer;
+}
+
+.search-results li:hover {
+  background-color: #f8f9fa;
+}
+
+.search-results li:active {
+  background-color: #e9ecef;
 }
 
 /* Hiển thị dropdown khi hover vào wrapper */

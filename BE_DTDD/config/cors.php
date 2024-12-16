@@ -14,20 +14,10 @@ return [
     |
     */
 
-    'paths' => ['api/*', 'sanctum/csrf-cookie'],
-
-    'allowed_methods' => ['*'],
-
-    'allowed_origins' => ['*'],
-
-    'allowed_origins_patterns' => [],
-
-    'allowed_headers' => ['*'],
-
-    'exposed_headers' => [],
-
-    'max_age' => 0,
-
-    'supports_credentials' => false,
+    'paths' => ['api/*'], // Chỉ áp dụng cho các route bắt đầu bằng /api/
+    'allowed_methods' => ['*'], // Cho phép tất cả phương thức HTTP
+    'allowed_origins' => ['http://localhost:5173'], // Chỉ cho phép request từ localhost:5173
+    'allowed_headers' => ['*'], // Cho phép tất cả headers
+    'supports_credentials' => false, // Không cần hỗ trợ cookies, nếu không cần có thể để false
 
 ];

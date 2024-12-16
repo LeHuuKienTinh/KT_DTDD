@@ -15,7 +15,7 @@ export default function (to, from, next) {
             } else {
                 next({
                     path: '/kt-mobile/login',
-                    query: { redirect: encodeURIComponent(from.fullPath) }
+                    // query: { redirect: encodeURIComponent(from.fullPath) }
                 });
                 toaster.error('Thông báo<br>' + res.data.message);
             }

@@ -9,7 +9,7 @@
                                 class="rounded-circle p-1 bg-primary" width="110">
                             <div class="mt-3">
                                 <h4>{{ user_info.name }}</h4>
-                                <p class="text-muted font-size-sm">Bay Area, San Francisco, CA</p>
+                                <!-- <p class="text-muted font-size-sm">Bay Area, San Francisco, CA</p> -->
                             </div>
                             <div class="row">
                                 <div class="col-sm-9 text-secondary">
